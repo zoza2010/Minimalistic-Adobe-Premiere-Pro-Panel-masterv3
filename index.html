@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Clip Renamer</title>
+		<script type="text/javascript">
+            function myFunction3() {
+				window.__adobe_cep__.evalScript("export_xml()", callback);
+			}
+           
+           function myFunction4() {
+				window.__adobe_cep__.evalScript("upper_scenes_length()", callback);
+			}
+            function myFunction5() {
+				window.__adobe_cep__.evalScript("export_by_upper_track()", callback);
+			}
+            function myFunction6() {
+				window.__adobe_cep__.evalScript("scenes_prosto()", callback);
+			}
+            function myFunction7() {
+				window.__adobe_cep__.evalScript("scenes_sg()", callback);
+			}
+            function myFunction8() {
+				window.__adobe_cep__.evalScript("scenes_cow()", callback);
+			}
+            function myFunction9() {
+                var val_res= document.getElementById("res");
+                call_text="export_by_upper_track('"+val_res.value+"')";
+				window.__adobe_cep__.evalScript(call_text, callback);
+			}
+            function myFunction10() {
+                var val_res= document.getElementById("res");
+                call_text="export_by_upper_track_filename('"+val_res.value+"')";
+				window.__adobe_cep__.evalScript(call_text, callback);
+			}
+			function callback(data) {
+				if (!data || data.length < 0) return;
+				try {
+					var file_paths = JSON.parse(data);
+					console.log(file_paths);
+					document.getElementById("result").innerHTML = file_paths;
+				} catch(error) {
+					console.log(error);
+				}
+			}
+            
+            function myFunction12() {
+				window.__adobe_cep__.evalScript("lazy_sc_layer()", callback);
+			}
+            
+            function myFunction12_1() {
+				window.__adobe_cep__.evalScript("lazy_ep_layer()", callback);
+			} 
+
+            function myFunction14() {
+				window.__adobe_cep__.evalScript("scenes_enotki_short()", callback);
+			}
+            function myFunction15() {
+				window.__adobe_cep__.evalScript("scenes_enotki_full()", callback);
+			}
+			function myFunction16() {
+				window.__adobe_cep__.evalScript("export_json()", callback);
+			}
+		</script>
+	</head>
+
+	<body>
+        <button onclick="myFunction3()">Export XML</button> <br>
+        <hr { color: #123455; height:3px; }>
+        <button onclick="myFunction4()">Upper scenes length</button> <br>
+        <hr { color: #123455; height:3px; }>
+        <button onclick="myFunction12()">Lazy scenes layer</button> <br>
+        <button onclick="myFunction12_1()">Lazy episode layer</button> <br>
+        <hr { color: #553455; height:3px; }>
+        <button onclick="myFunction6()">Scenes Prostokvashino </button> <br>
+        
+        <button onclick="myFunction8()">Scenes Cow </button> <br>
+        <button onclick="myFunction14()">Enotki Short </button> <br>
+        <button onclick="myFunction15()">Enotki Fullname </button> <br>
+        <hr { color: #553455; height:3px; }>
+        <button onclick="myFunction7()">Scenes SG - Крутиксы</button> <br>
+        <button onclick="myFunction16()">Export JSON</button> <br>
+
+
+        <hr { color: #553455; height:3px; }>
+       <head>Export by upper track: </head> <br>
+        <label>Select Profile:</label>
+        <select id="res">
+            <option value="prof.epr">default</option>
+            <option value="audio.epr">audio</option>
+            <option value="video.epr">video</option>
+        </select>
+        <button onclick="myFunction9()"> export </button>
+        		<div id="result"></div>
+        <hr { color: #123455; height:3px; }>
+	</body>
+</html>
